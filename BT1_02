@@ -1,0 +1,37 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int TinhGT( int n)
+{
+  if (n==1||n==0)  
+  {
+      return 1;
+  }
+  else
+  {
+      return TinhGT(n-1) * n;
+  }
+}
+  float tinhTong(int x, int n)
+  {
+      if (n==0)
+      {
+          return x;
+         
+      }
+      else 
+      {
+       return(pow(x,n)) / TinhGT(n) + tinhTong(x, n-1);
+      }
+       
+  }
+  int main()
+  {
+      int x,n;
+      std::cout << "\nnhap vap x" << std::endl;
+      std::cin >> x;
+      cout<<"\nnhap vao n"<<endl;
+      cin>> n;
+      cout<<"\nket qua la:" << tinhTong(x,n);
+  }

@@ -1,0 +1,112 @@
+#include <iostream>
+
+using namespace std;
+#define MAX 100
+struct queue
+{
+    private:
+        int item[MAX];
+        int front,rear;
+    public:
+        queue()
+        {
+            front = -1;
+            rear = -1;
+        }
+        void pus(int x)
+        {
+            if(isfull())
+            {
+                std::cout << "hang doi day" << std::endl;
+            }
+            else if(isempty())
+            {
+                front = rear = 0;
+            }
+            else
+            {
+                rear++;
+            }
+            item[rear] = x;
+            cout << "phan tu " << x << " duoc them vao " << endl;
+        
+        }
+        void pop()
+        {
+            if(isempty())
+            {
+                cout << "khong co phan tu nao trong hang doi" << endl;
+                
+            }
+            else if (front == rear)
+            {
+                front = rear = -1;
+            }
+            else
+            {
+                front++;
+            }
+            cout << "phan tu da duoc lay ra" << endl;
+        }
+        bool isfull()
+        {
+            if(rear == MAX -1)
+                return true;
+            else
+                return false;
+        }
+        bool isempty()
+        {
+            if(front == -1 && rear == -1)
+                return true;
+            else
+                return false;
+        }
+        
+        void display() {
+            if (isempty()) {
+                cout << "hang đoi trong\n";
+                
+            }
+            else
+            {
+            for (int i = front; i <= rear; i++) {
+                cout << item[i] << " ";
+            }
+            cout << endl;
+            }
+        }
+};
+int main()
+{
+    queue q;
+    int luachon, value;
+    do
+    {
+        
+        cout << "---------MENU---------" << endl;
+        cout << "1. pus\n" << "2. pop\n"<< "3. xuat_hang_doi\n" << "4. exit" << endl;
+        std::cin >> luachon;
+        switch(luachon)
+        {
+            case 1:
+            cout << "nhap vao dau phan tu: " << endl;
+            cin >> value;
+            q.pus(value);
+            break;
+            case 2:
+            q.pop();
+            break;
+            case 3:
+            q.display();
+            break;
+            case 4:
+            break;
+        }
+    }
+    while(luachon != 4);
+    return 0;
+    
+    
+    
+}

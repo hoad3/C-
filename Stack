@@ -1,0 +1,107 @@
+#include <iostream>
+using namespace std;
+
+#define MAX 100
+
+struct Stack {
+private:
+    int top;
+    int a[MAX];
+
+public:
+    Stack() {
+        top = -1;
+    }
+    bool push(int x) {
+        if (top >= MAX - 1) {
+            cout << "tran stack\n";
+            return false;
+        }
+        else {
+            a[++top] = x;
+            cout << "them phan tu  " << x << " vao stack\n";
+            return true;
+        }
+    }
+    int pop() {
+        if (top < 0) {
+            cout << "khong co gi trong stack\n";
+            return 0;
+        }
+        else {
+            int x = a[top--];
+            return x;
+        }
+    }
+    int peek() {
+        if (top < 0) {
+            cout << "Stack rong\n";
+            return 0;
+        }
+        else {
+            int x = a[top];
+            return x;
+        }
+    }
+    bool isEmpty() {
+        return top < 0;
+    }
+    void display() {
+        if (isEmpty()) {
+            cout << "Stack rong\n";
+        }
+        else {
+            cout << "phan tu trong mang: ";
+            for (int i = top; i >= 0; i--)
+                cout << a[i] << " ";
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    Stack s;
+    int luachon, phantu;
+    cout << "---------MENU---------" << endl;
+    cout << "1. Push\n2. Pop\n3. Peek\n4. IsEmpty\n5. Display\n6. Exit\n" << endl;
+    do {
+        cout << "Nhap vao lua chon: ";
+        cin >> luachon;
+        switch (luachon) {
+        case 1:
+            cout << "Nhap phan tu muon them vao stack: ";
+            cin >> phantu;
+            s.push(phantu);
+            break;
+        case 2:
+            cout << "Lay phan tu ra khoi stack\n";
+            phantu = s.pop();
+            cout << "lay ra phan tu dau tien: " << phantu << endl;
+            break;
+        case 3:
+            cout << "Kiem tra phan tu dau stack: " << endl;
+            phantu = s.peek();
+            cout << "Phan tu dau tien cua stack la: " << phantu << endl;
+            break;
+        case 4:
+            if (s.isEmpty()) {
+                cout << "Stack rong\n";
+            }
+            else {
+                cout << "Stack khong rong\n";
+            }
+            break;
+        case 5:
+            s.display();
+            break;
+        case 6:
+            cout << "Thoat chuong trinh\n";
+            exit(0);
+        default:
+            cout << "Lua chon khong hop le\n";
+        }
+    } while (luachon != 6);
+
+    return 0;
+}
+

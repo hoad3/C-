@@ -1,0 +1,24 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int tinhx(int n)
+{
+    if (n == 0) 
+    return 1;
+    int S = 0;
+    for (int i = 1; i <= n; i++)
+    {
+    S = S + i * i * tinhx(n - 1);
+    }
+    return S;
+} 
+
+
+int main()
+{
+    int n;
+    std::cout << "nhap vao n: "<<endl;
+    std::cin >> n;
+    cout << "x" "("<< n <<") =" <<tinhx(n) << endl;
+    return 0;
+}

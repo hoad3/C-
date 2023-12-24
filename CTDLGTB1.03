@@ -1,0 +1,30 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int tinhx(int n);
+int tinhy(int n);
+int tinhx(int n)
+{
+    if (n == 0) 
+    {
+    return 1;
+    }
+    return tinhx(n-1) + tinhy(n-1);
+} 
+int tinhy(int n)
+{
+    if (n == 0)
+    { 
+    return 0;
+    }
+    return 3 * tinhx(n - 1) + 2 * tinhy(n - 1);
+}
+
+int main()
+{
+    int n;
+    std::cin >> n;
+    cout << tinhx(n) << endl;
+    cout <<tinhy(n) << endl;
+    return 0;
+}

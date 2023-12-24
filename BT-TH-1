@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+
+int nhapmang(int A[], int n)
+{
+    for(int i = 1; i<=n; i++)
+    {
+        cout << "A["<< i <<"]=";
+        cin >> A[i];
+    }
+    return 0;
+}
+int xuatmang(int A[], int n)
+{
+    
+    
+    for(int i=1; i<=n; i++)
+    {
+        cout << A[i];
+    }
+    
+    return 0;
+}
+int tong(int A[], int n)
+{
+    
+    
+    if(n==0)
+    {
+        return 0;
+    }
+    int S = tong(A, n-1);
+    if (A[n-1] % 2 == 0)
+    { 
+        S = S + A[n];
+        return S;
+    }
+    
+}
+int main()
+{
+   int A[100];
+	int n;
+	do
+	{
+		cout << "\nnhap so luong phan tu: ";
+		cin >> n;
+		if (n < 0)
+		{
+			cout << "\n mang khong dung nhap lai:";
+		}
+	} while (n < 0);
+	nhapmang(A,n);
+	tong(A,n);
+	cout<<"tong la: "<<tong(A, n-1) + A[n];
+	return 0;
+}
